@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuite du Destin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fuite">
+  <div id="game-container">
+    <header>
+      <h1>Vous avez fui la guerre</h1>
+      <p id="narration">
+        Vous vous êtes dissimulé loin du champ de bataille. Aucun cor ne vous réveille, aucune bannière ne vous appelle. Le silence est votre seule compagnie.
+      </p>
+    </header>
+
+    <section id="character-stats">
+      <p><strong>Niveau :</strong> <span id="level"></span></p>
+      <p><strong>HP :</strong> <span id="hp"></span></p>
+    </section>
+
+    <section id="log">
+      <p id="log-text"></p>
+    </section>
+
+    <section id="actions">
+      <button id="train-btn">S’entraîner en secret</button>
+    </section>
+
+    
+
+    <div id="popup" class="popup" style="display: none;">
+      <div id="popup-content">
+        <p id="popup-text"></p>
+        <div id="popup-choices"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="fuite.js"></script>
+</body>
+</html>

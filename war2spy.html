@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission d'Éclaireur - L'Ombre Silencieuse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="war2spy">
+  <div id="game-container">
+    <div id="background"></div>
+    <header>
+      <h1>L'Ombre Silencieuse</h1>
+      <p id="narration">
+        La nuit tombe sur le camp. Les ordres sont clairs : des yeux dans l'ombre.
+      </p>
+    </header>
+
+    <section id="character-stats">
+      <p><strong>Titre :</strong> <span id="title">Éclaireur de la Nuit</span></p>
+      <p><strong>Niveau :</strong> <span id="level"></span></p>
+      <p><strong>HP :</strong> <span id="hp"></span></p>
+      
+    </section>
+
+    <section id="log">
+      <p id="log-text"></p>
+    </section>
+    
+    <section id="actions">
+      <p><strong>Que faites-vous ?</strong></p>
+      <div id="choices">
+        <!-- Les boutons seront créés dynamiquement par le JavaScript -->
+      </div>
+    </section>
+  </div>
+
+  <script src="war2spy.js"></script>
+  
+  <div id="final-choice" class="popup hidden" style="display: none">
+    <div id="popup-content">
+      <p id="final-popup-text">
+        La mission est terminée.<br><br>
+        Les ombres gardent vos secrets. Le château garde ses morts.<br>
+        Votre nom glisse dans les murmures, s'inscrit dans les rapports confidentiels.<br><br>
+        <strong>Où irez-vous maintenant ?</strong>
+      </p>
+      <div id="popup-choices">
+        <button id="go-home">Disparaître dans la nuit</button>
+        <button id="go-capital">Rejoindre les services secrets de la capitale</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="gameover-popup" class="popup hidden" style="display: none">
+    <div id="popup-content" style="text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.9); padding: 20px; border-radius: 10px; width: 80%; max-width: 600px;">
+        <p id="gameover-text"></p>
+        <div id="popup-choices" style="margin-top: 20px;">
+            <button id="restart-btn" onclick="window.location.href='index.html'">Recommencer</button>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

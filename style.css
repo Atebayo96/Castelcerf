@@ -1,0 +1,559 @@
+/* -------------------------------------------------- */
+/* POLICE ET RÉINITIALISATION GLOBALE */
+/* -------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MedievalSharp', serif;
+  color: #fdf6e3;
+  text-shadow: 1px 1px 2px #000;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------------------------------------- */
+/* FONDS D'ÉCRAN SELON CONTEXTE */
+/* -------------------------------------------------- */
+body:not(.war) {
+  background: url('assets/monastry.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.war {
+  background: url('assets/war.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.war2infantery {
+  background: url('assets/infantery.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.fuite {
+  background: url('assets/fuite.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.war2spy{
+  background: url('assets/spy.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.war2aide{
+  background: url('assets/aide.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.war2archer{
+  background: url('assets/archer.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* -------------------------------------------------- */
+/* STRUCTURE GÉNÉRALE DU CONTENU */
+/* -------------------------------------------------- */
+#game-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 2px solid #fff4c2;
+  border-radius: 12px;
+  margin-top: 50px;
+}
+
+header h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ffe8a3;
+}
+
+#narration {
+  font-size: 1.2em;
+  text-align: left;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+#character-stats {
+  background-color: rgba(0, 0, 0, 0.428);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+#character-stats p {
+  margin: 10px 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+#character-stats strong {
+  color: #ffd700;
+  margin-right: 10px;
+}
+
+#character-stats #title {
+  color: #fff7cc;
+  font-size: 1em;
+  font-style: italic;
+}
+
+#character-stats #level,
+#character-stats #hp {
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+#actions {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* -------------------------------------------------- */
+/* BOUTON ENTRAÎNEMENT STANDARD */
+/* -------------------------------------------------- */
+#train-btn {
+  background-color: #d4af37;
+  color: #2c1a00;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#train-btn:hover {
+  background-color: #e6c95c;
+}
+
+/* -------------------------------------------------- */
+/* JOURNAL DE COMBAT / LOG TEXTE */
+/* -------------------------------------------------- */
+#log {
+  margin-top: 10px;
+  min-height: 50px;
+  font-style: italic;
+  color: #f0e2b6;
+  border-top: 1px solid #fff3b0;
+  padding-top: 10px;
+  font-size: 1.3em;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* -------------------------------------------------- */
+/* POP-UP DE NARRATION */
+/* -------------------------------------------------- */
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: linear-gradient(to bottom, #2b1f0f 0%, #1a140a 100%);
+  border: 3px solid #ffd700;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  color: #fff7cc;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  
+}
+
+#popup-text {
+  white-space: pre-line;
+  line-height: 1.8;
+  font-size: 1.1em;
+}
+
+#popup.hidden {
+  display: none;
+}
+
+#popup-choices button {
+  background-color: #916a1e;
+  color: #fff;
+  margin: 10px;
+  padding: 16px 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+#popup-choices button:hover {
+  background-color: #a87c3b;
+}
+.popup.hidden {
+  display: none;
+}
+
+#final-choice {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#final-choice #popup-content {
+  background-color: #2b1f0f;
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  color: #fff7cc;
+}
+
+/* -------------------------------------------------- */
+/* CHOIX DE RÔLES ET BOUTONS NARRATIFS */
+/* -------------------------------------------------- */
+#choices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#choices button {
+  background: linear-gradient(to bottom, #8b5e34 0%, #5c3d2e 100%);
+  color: #f8f1e1;
+  padding: 16px 28px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  min-width: 280px;
+  max-width: 600px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  white-space: normal;
+  line-height: 1.6;
+}
+
+#choices button:hover {
+  background: linear-gradient(to bottom, #a67245 0%, #7e4e3d 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+#choices button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Style spécifique pour les boutons de fin */
+#popup-choices button {
+  background: linear-gradient(to bottom, #916a1e 0%, #614611 100%);
+  color: #fff;
+  margin: 10px;
+  padding: 16px 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 600px;
+  min-width: 280px;
+  white-space: normal;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+#popup-choices button:hover {
+  background: linear-gradient(to bottom, #a87c3b 0%, #7a5918 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* -------------------------------------------------- */
+/* ENTRAÎNEMENT SPÉCIAL APRÈS CHOIX DE CLASSE */
+/* -------------------------------------------------- */
+#special-train-btn {
+  background-color: #5b8a3c;
+  color: #fffbe7;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#special-train-btn:hover {
+  background-color: #6da94f;
+}
+
+/* -------------------------------------------------- */
+/* BOUTON DE LANCEMENT DE GUERRE */
+/* -------------------------------------------------- */
+#start-battle-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #5c3d2e;
+  color: #f8f1e1;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+#start-battle-btn:hover {
+  background-color: #7e4e3d;
+  transform: scale(1.03);
+}
+
+/* Style spécifique pour la popup de victoire */
+.popup.victory {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.85);
+  display: none;  /* Par défaut, la popup est cachée */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup.victory #popup-content {
+  background: linear-gradient(to bottom, #2b1f0f 0%, #1a140a 100%);
+  border: 3px solid #ffd700;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  color: #fff7cc;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.popup.victory #victory-text {
+  color: #fff7e6;
+  font-size: 1.3em;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.popup.victory #popup-choices button {
+  background: linear-gradient(to bottom, #ffd700 0%, #b8860b 100%);
+  color: #2b1f0f;
+  font-weight: bold;
+  border: 2px solid #daa520;
+  padding: 16px 28px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.popup.victory #popup-choices button:hover {
+  background: linear-gradient(to bottom, #fff2cc 0%, #ffd700 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* S'assurer que .hidden cache vraiment l'élément */
+.popup.hidden {
+  display: none !important;
+}
+
+.popup-choices {
+  margin-top: 20px;
+}
+
+/* Style unifié pour toutes les popups */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Style unifié pour le contenu des popups */
+.popup-content, #popup-content {
+    background: linear-gradient(to bottom, #2b1f0f 0%, #1a140a 100%);
+    border: 3px solid #ffd700;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    color: #fff7cc;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    position: relative;
+    margin: auto;
+}
+
+/* Style unifié pour le texte des popups */
+.popup-text, #popup-text, #gameover-text {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    white-space: pre-line;
+    color: #fff7cc;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Style unifié pour les boutons des popups */
+.popup-choices button, #popup-choices button {
+    background: linear-gradient(to bottom, #ffd700 0%, #b8860b 100%);
+    color: #2b1f0f;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+    width: 100%;
+    max-width: 400px;
+    font-weight: bold;
+}
+
+.popup-choices button:hover, #popup-choices button:hover {
+    background: linear-gradient(to bottom, #fff7cc 0%, #ffd700 100%);
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Gestion de l'affichage */
+.popup.hidden {
+    display: none !important;
+}
+
+.popup:not(.hidden) {
+    display: flex !important;
+}
+
+/* Style pour les conteneurs de choix */
+.popup-choices, #popup-choices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Style spécifique pour le popup de game over */
+#gameover-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    z-index: 999;
+}
+
+#gameover-popup.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style pour le texte de game over */
+#gameover-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    white-space: pre-line;
+    color: #fff7cc;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Style pour tous les boutons dans les popups */
+.popup button {
+    background: linear-gradient(to bottom, #ffd700 0%, #b8860b 100%);
+    color: #2b1f0f;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+    width: auto;
+    min-width: 200px;
+}
+
+.popup button:hover {
+    background: linear-gradient(to bottom, #fff7cc 0%, #ffd700 100%);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+#role-intro {
+    font-size: 1.1em;
+    line-height: 1.2;
+    margin: 5px 0;
+    text-align: center;
+    color: #fff7cc;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+#role-intro strong {
+    font-size: 1.2em;
+    color: #ffd700;
+    display: block;
+    margin-bottom: 10px;
+}

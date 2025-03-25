@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Champ de Bataille - Infanterie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="war2infantery">
+  <div id="game-container">
+    <div id="background"></div>
+    <header>
+      <h1>La Guerre Commence</h1>
+      
+    </header>
+
+    <section id="character-stats">
+      <p><strong>Titre :</strong> <span id="title">Soldat de la Muraille de Fer</span></p>
+      <p><strong>Niveau :</strong> <span id="level"></span></p>
+      <p><strong>HP :</strong> <span id="hp"></span></p>
+    </section>
+
+    <section id="log">
+      <p id="log-text"></p>
+    </section>
+
+    <section id="actions">
+      <div id="choices">
+      </div>
+    </section>
+    
+    
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <div id="popup-content">
+      <p id="popup-text"></p>
+      <div id="popup-choices"></div>
+    </div>
+  </div>
+
+  <div id="gameover-popup" class="popup hidden">
+    <div class="popup-content">
+      <p id="gameover-text"></p>
+      <div class="popup-choices">
+        <button onclick="window.location.href='index.html'">Recommencer</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="victory-popup" class="popup victory hidden">
+    <div class="popup-content">
+      <p id="victory-text">
+        La bataille est terminée.
+        
+        Les vivants pansent leurs plaies. Les morts veillent les étoiles.
+        Votre nom est murmuré dans les rangs, écrit dans les chants des survivants.
+      </p>
+      <div class="popup-choices">
+        <button id="capital-btn">Suivre l'armée vers la capitale, où votre force forgera l'Histoire</button>
+        <button id="convent-btn">Retrouver la paix des murs qui vous ont vu naître, là où le silence guérit les âmes</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="war2infantery.js"></script>
+</body>
+</html>

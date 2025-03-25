@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Enfant du Couvent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-container">
+    <div id="background"></div>
+
+    <header>
+      <h1>L'Enfant du Couvent</h1>
+      <p id="narration">
+        Dans un couvent isolé, bien au-delà des murailles de la capitale, la duchesse De Constance met au monde un enfant.  
+        Fruit d'une union interdite, son nom ne figure dans aucun registre.  
+        Mais dans les murmures des vieilles nonnes, un mot revient — <em>Tardo</em>.  
+        On dit que cette lignée maudite porte un destin plus grand que les remparts des rois.  
+        Vous êtes cet enfant.  
+        Et votre histoire commence ici.
+      </p>
+      
+    </header>
+
+    <section id="character-stats">
+      <p><strong>Titre :</strong> <span id="title">Enfant Illégitime</span></p>
+      <p><strong>Niveau :</strong> <span id="level">1</span></p>
+      <p><strong>HP :</strong> <span id="hp"></span></p>
+
+    </section>
+
+    <section id="log">
+      <p id="log-text"></p>
+    </section>
+
+    <section id="actions">
+      <button id="train-btn">S'entrainer</button>
+    </section>
+
+    
+
+    <div id="popup" class="hidden">
+      <div id="popup-content">
+        <p id="popup-text"></p>
+        <div id="popup-choices"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
