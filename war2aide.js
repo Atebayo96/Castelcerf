@@ -15,26 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const hpSpan = document.getElementById("hp");
   const titleSpan = document.getElementById("title");
   const logText = document.getElementById("log-text");
-  const intelligenceSpan = document.getElementById("intelligence");
 
   levelSpan.textContent = level;
   hpSpan.textContent = hp;
-  intelligenceSpan.textContent = stats.intelligence;
 
   // Introduction narrative
   logText.textContent = "Les armes ne sont pas votre domaine, mais le chaos vous entoure malgré tout. On vous assigne à l'arrière. Une voix crie : 'Toi, aide à monter le camp !' Le destin vous regarde... en silence.";
 
+  const wasteTimeBtn = document.getElementById("wastetime-btn");
+  const stayNearBtn = document.getElementById("staynear-btn");
   const choicesContainer = document.getElementById("choices");
-  
-  // Premiers boutons
-  const wasteTimeBtn = document.createElement("button");
-  wasteTimeBtn.textContent = "S'éclipser dans les bois, loin des tambours";
-  
-  const stayNearBtn = document.createElement("button");
-  stayNearBtn.textContent = "Veiller, tapi, aux abords de la tente du Haut Commandement";
-
-  choicesContainer.appendChild(wasteTimeBtn);
-  choicesContainer.appendChild(stayNearBtn);
 
   wasteTimeBtn.addEventListener("click", () => {
     showGameOver("Vous partez chercher du bois, l'esprit ailleurs. Le destin, lui, reste concentré. Vous tombez nez à nez avec deux silhouettes encapuchonnées. Leur lame est rapide. Votre fin, silencieuse.\n\nPersonne ne trouva votre corps.");
