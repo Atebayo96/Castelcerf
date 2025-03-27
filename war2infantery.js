@@ -68,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showAdvanceChoices() {
     choicesContainer.innerHTML = "";
-    
+
     const helpBtn = document.createElement("button");
     helpBtn.textContent = "Aider les blessés et se battre";
-    
+
     const retreatBtn = document.createElement("button");
     retreatBtn.textContent = "Rester en retrait";
 
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showBerserkChoices() {
     choicesContainer.innerHTML = "";
-    
+  
     const persistBtn = document.createElement("button");
     persistBtn.textContent = "Persister dans l'avance solitaire";
     
@@ -150,9 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showFinalChoices() {
     choicesContainer.innerHTML = "";
-    
-    const chargeCmdBtn = document.createElement("button");
-    chargeCmdBtn.textContent = "Foncer sur le commandant ennemi";
+  
+      const chargeCmdBtn = document.createElement("button");
+      chargeCmdBtn.textContent = "Foncer sur le commandant ennemi";
     
     const continueMassacreBtn = document.createElement("button");
     continueMassacreBtn.textContent = "Continuer à massacrer les troupes";
@@ -191,9 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     newConventBtn.addEventListener("click", () => {
         saveStats();
-        window.location.href = "home.html";
+      window.location.href = "home.html";
     });
-    
+  
     // Afficher la popup
     victoryPopup.style.display = "flex";
     victoryPopup.classList.remove("hidden");

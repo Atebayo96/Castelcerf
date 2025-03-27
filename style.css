@@ -22,37 +22,37 @@ body {
 /* FONDS D'ÉCRAN SELON CONTEXTE */
 /* -------------------------------------------------- */
 body:not(.war) {
-  background: url('assets/monastry.webp') no-repeat center center fixed;
+  background: url('assets/monastry.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 body.war {
-  background: url('assets/war.webp') no-repeat center center fixed;
+  background: url('assets/war.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 body.war2infantery {
-  background: url('assets/infantery.webp') no-repeat center center fixed;
+  background: url('assets/infantery.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 body.fuite {
-  background: url('assets/fuite.webp') no-repeat center center fixed;
+  background: url('assets/fuite.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 body.war2spy{
-  background: url('assets/spy.webp') no-repeat center center fixed;
+  background: url('assets/spy.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 body.war2aide{
-  background: url('assets/aide.webp') no-repeat center center fixed;
+  background: url('assets/aide.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 body.war2archer{
-  background: url('assets/archer.webp') no-repeat center center fixed;
+  background: url('assets/archer.png') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -556,4 +556,120 @@ header h1 {
     color: #ffd700;
     display: block;
     margin-bottom: 10px;
+}
+
+/* -------------------------------------------------- */
+/* RESPONSIVE DESIGN - MOBILE */
+/* -------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    #game-container {
+        margin-top: 20px;
+        padding: 15px;
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    #narration {
+        font-size: 1.1em;
+        padding: 0 10px;
+    }
+
+    #character-stats {
+        padding: 15px;
+    }
+
+    #character-stats p {
+        font-size: 1.1em;
+    }
+
+    #log {
+        font-size: 1.1em;
+        padding: 10px;
+    }
+
+    /* Ajustement des boutons pour mobile */
+    #choices button, 
+    .popup button,
+    #popup-choices button,
+    .popup-choices button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        min-width: 200px;
+        width: 90%;
+        margin: 8px auto;
+    }
+
+    /* Ajustement des popups pour mobile */
+    .popup-content,
+    #popup-content {
+        padding: 20px;
+        width: 95%;
+        margin: 10px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .popup-text,
+    #popup-text,
+    #gameover-text {
+        font-size: 1.1em;
+        padding: 0 5px;
+    }
+
+    /* Amélioration du scroll sur mobile */
+    .popup-content {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+
+    /* Ajustement de la taille des textes pour mobile */
+    #role-intro {
+        font-size: 1em;
+        padding: 0 10px;
+    }
+
+    #role-intro strong {
+        font-size: 1.1em;
+    }
+}
+
+/* Pour les très petits écrans */
+@media screen and (max-width: 380px) {
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    #choices button, 
+    .popup button,
+    #popup-choices button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .popup-content,
+    #popup-content {
+        padding: 15px;
+    }
+}
+
+/* Empêcher le zoom sur mobile lors du focus des boutons */
+@media screen and (max-width: 768px) {
+    button {
+        touch-action: manipulation;
+    }
+}
+
+/* Amélioration de la lecture sur les appareils en mode paysage */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    #game-container {
+        margin-top: 10px;
+    }
+
+    .popup-content {
+        max-height: 85vh;
+    }
 }

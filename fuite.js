@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Le silence devient votre seule arme.",
         "Vous répétez les gestes vus autrefois, maladroitement.",
         "Chaque jour vous éloigne… et pourtant vous n'oubliez pas.",
-        "L’ombre est votre manteau, mais elle ne réchauffe rien."
+        "L'ombre est votre manteau, mais elle ne réchauffe rien."
       ];
   
       const message = logMessages[Math.floor(Math.random() * logMessages.length)];
@@ -36,15 +36,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     function triggerFuiteFinal() {
-      trainBtn.disabled = true;
-      popup.style.display = "flex";
+        trainBtn.disabled = true;
+        
+        // Nettoyer les choix précédents
+        popupChoices.innerHTML = "";
+        
+        // Mettre à jour le texte
+        popupText.textContent = `Les années passent… ou peut-être seulement des semaines.
+        Les nouvelles sont rares, puis funestes.
+        L'armée royale a été balayée.
+        Le château dans lequel vous vous cachez est l'un des derniers bastions du royaume.
+        L'ennemi approche. Ils ne font pas de prisonniers.
+        
+        🏰 Les tambours de guerre résonnent à nouveau, mais cette fois, plus proches.
+        Le Lord du château refuse de se rendre.
+        Les archers se placent. Les épées sont tirées.
+        Et vous, qui aviez fui… êtes cette fois au milieu de la mêlée, sans entraînement, sans repère.
   
-      popupText.textContent = `Les années passent… ou peut-être seulement des semaines.\nLes nouvelles sont rares, puis funestes.\nL’armée royale a été balayée.\n Le château dans lequel vous vous cachez est l’un des derniers bastions du royaume.\nL’ennemi approche. Ils ne font pas de prisonniers.\n 🏰 Les tambours de guerre résonnent à nouveau, mais cette fois, plus proches.\n Le Lord du château refuse de se rendre.\nLes archers se placent. Les épées sont tirées.\nEt vous, qui aviez fui… êtes cette fois au milieu de la mêlée, sans entraînement, sans repère. \n 💀 \b \n Une lance vous transperce. Vous tombez.\nLe sol est froid. La guerre vous a rattrapé.`;
-  
-      const restart = document.createElement("button");
-      restart.textContent = "Vous avez fui la guerre… mais pas le destin.";
-      restart.onclick = () => window.location.href = "index.html";
-      popupChoices.appendChild(restart);
+        💀 Une lance vous transperce. Vous tombez.
+        Le sol est froid. La guerre vous a rattrapé.`;
+        
+        // Créer le bouton de recommencement
+        const restart = document.createElement("button");
+        restart.textContent = "Vous avez fui la guerre… mais pas le destin.";
+        restart.onclick = () => window.location.href = "index.html";
+        popupChoices.appendChild(restart);
+        
+        // Afficher la popup
+        popup.style.display = "flex";
+        popup.classList.remove("hidden");
     }
-  });
+});
   
